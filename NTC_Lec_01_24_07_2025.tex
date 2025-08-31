@@ -1,0 +1,406 @@
+% \documentclass[hidelinks]{article}
+% \usepackage[a4paper, total={7in, 10in}]{geometry}
+% \usepackage[dvipsnames]{xcolor}
+% \usepackage{amsmath}
+% \usepackage{amssymb}
+% \usepackage{tikz}
+% \usepackage{tkz-euclide}
+% \usepackage[unicode]{hyperref}
+% \usepackage[all]{hypcap}
+% \usepackage{fancyhdr}
+
+% \usetikzlibrary{angles,calc, decorations.pathreplacing}
+
+% \definecolor{carminered}{rgb}{1.0, 0.0, 0.22}
+% \definecolor{capri}{rgb}{0.0, 0.75, 1.0}
+% \definecolor{brightlavender}{rgb}{0.75, 0.58, 0.89}
+
+% \title{\textbf{Number Theory \& Cryptography}}
+% \author{S. Muhammed}
+% \date{July 24th, 2025}
+% \begin{document}
+% \hypersetup{bookmarksnumbered=true,}
+% % \pagecolor{whiteblack}
+% % \color{white}
+% \maketitle
+
+% % \begin{Large}
+% % \tableofcontents
+% % \end{Large}%
+% % \pagebreak
+
+% \section{Cryptosystem}
+
+% \tikzset{every picture/.style={line width=0.75pt}} %set default line width to 0.75pt        
+
+% \begin{tikzpicture}[x=0.75pt,y=0.75pt,yscale=-1,xscale=1]
+% %uncomment if require: \path (0,386); %set diagram left start at 0, and has height of 386
+
+% %Rounded Rect [id:dp9771184983681228] 
+% \draw   (64,51.8) .. controls (64,43.63) and (70.63,37) .. (78.8,37) -- (171.2,37) .. controls (179.37,37) and (186,43.63) .. (186,51.8) -- (186,96.2) .. controls (186,104.37) and (179.37,111) .. (171.2,111) -- (78.8,111) .. controls (70.63,111) and (64,104.37) .. (64,96.2) -- cycle ;
+% %Rounded Rect [id:dp1945571681567504] 
+% \draw   (473,59.8) .. controls (473,51.63) and (479.63,45) .. (487.8,45) -- (580.2,45) .. controls (588.37,45) and (595,51.63) .. (595,59.8) -- (595,104.2) .. controls (595,112.37) and (588.37,119) .. (580.2,119) -- (487.8,119) .. controls (479.63,119) and (473,112.37) .. (473,104.2) -- cycle ;
+% %Curve Lines [id:da9889239320357027] 
+% \draw    (187,79) .. controls (227,49) and (227,107) .. (267,77) ;
+% %Curve Lines [id:da33775812576224185] 
+% \draw    (392,74) .. controls (430,117) and (445,49) .. (474,80) ;
+% %Shape: Ellipse [id:dp08540919171933103] 
+% \draw   (267,74) .. controls (267,55.5) and (294.98,40.5) .. (329.5,40.5) .. controls (364.02,40.5) and (392,55.5) .. (392,74) .. controls (392,92.5) and (364.02,107.5) .. (329.5,107.5) .. controls (294.98,107.5) and (267,92.5) .. (267,74) -- cycle ;
+% %Shape: Ellipse [id:dp46388791599193957] 
+% \draw   (132,145) .. controls (132,133.95) and (147.67,125) .. (167,125) .. controls (186.33,125) and (202,133.95) .. (202,145) .. controls (202,156.05) and (186.33,165) .. (167,165) .. controls (147.67,165) and (132,156.05) .. (132,145) -- cycle ;
+% %Straight Lines [id:da15973211656651143] 
+% \draw    (245,145) -- (244.03,88) ;
+% \draw [shift={(244,86)}, rotate = 89.03] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
+% %Straight Lines [id:da4746861972609774] 
+% \draw    (202,145) -- (245,145) ;
+% %Shape: Ellipse [id:dp0276925129822172] 
+% \draw   (511,156) .. controls (511,144.95) and (526.67,136) .. (546,136) .. controls (565.33,136) and (581,144.95) .. (581,156) .. controls (581,167.05) and (565.33,176) .. (546,176) .. controls (526.67,176) and (511,167.05) .. (511,156) -- cycle ;
+% %Straight Lines [id:da9085643931127179] 
+% \draw    (424,87) -- (425,157) ;
+% %Straight Lines [id:da7565444263438966] 
+% \draw    (425,157) -- (509,156.02) ;
+% \draw [shift={(511,156)}, rotate = 179.33] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
+% %Straight Lines [id:da31623314674601577] 
+% \draw    (329.5,107.5) -- (330.97,212) ;
+% \draw [shift={(331,214)}, rotate = 269.19] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
+% %Rounded Rect [id:dp23827477157096155] 
+% \draw   (245,228) .. controls (245,220.27) and (251.27,214) .. (259,214) -- (402,214) .. controls (409.73,214) and (416,220.27) .. (416,228) -- (416,270) .. controls (416,277.73) and (409.73,284) .. (402,284) -- (259,284) .. controls (251.27,284) and (245,277.73) .. (245,270) -- cycle ;
+% %Curve Lines [id:da659209956764685] 
+% \draw    (329.5,40.5) .. controls (369.1,10.8) and (333.72,55.1) .. (371.82,26.88) ;
+% \draw [shift={(373,26)}, rotate = 143.13] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
+
+% % Text Node
+% \draw (101,69) node [anchor=north west][inner sep=0.75pt]   [align=left] {Sender};
+% % Text Node
+% \draw (502,73) node [anchor=north west][inner sep=0.75pt]   [align=left] {Receiver};
+% % Text Node
+% \draw (301,65) node [anchor=north west][inner sep=0.75pt]   [align=left] {Internet};
+% % Text Node
+% \draw (160,135) node [anchor=north west][inner sep=0.75pt]   [align=left] {m};
+% % Text Node
+% \draw (132,173) node [anchor=north west][inner sep=0.75pt]   [align=left] {Message};
+% % Text Node
+% \draw (536,147) node [anchor=north west][inner sep=0.75pt]   [align=left] {m};
+% % Text Node
+% \draw (283,219) node [anchor=north west][inner sep=0.75pt]   [align=center] {Intruder/Attacker/\\Eavesdropper};
+% % Text Node
+% \draw (218,54) node [anchor=north west][inner sep=0.75pt]   [align=left] {Cipher};
+% % Text Node
+% \draw (402,57) node [anchor=north west][inner sep=0.75pt]   [align=left] {Cipher};
+% % Text Node
+% \draw (207,123) node [anchor=north west][inner sep=0.75pt]   [align=left] {Enc.};
+% % Text Node
+% \draw (430,134) node [anchor=north west][inner sep=0.75pt]   [align=left] {Dec.};
+% % Text Node
+% \draw (377,16) node [anchor=north west][inner sep=0.75pt]   [align=left] {{\small Insecure channel}};
+
+
+% \end{tikzpicture}
+
+% \begin{itemize}
+%     \item A key will be used that is known between only sender and receiver.
+%     \item Cryptanalysis - process/study of decrypting cipher without knowing key.
+%     \item Number theory helps us build cryptosystems.
+% \end{itemize}
+
+% \section{Properties on Integers and Rationals}
+%     \begin{itemize}
+%     \item Set of natural numbers: \( \mathbb{N} = \{1, 2, 3, \ldots\} \)
+%     \item Set of integers: \( \mathbb{Z} = \{0, \pm 1, \pm 2, \ldots\} \)
+%     \item Set of rationals: \( \mathbb{Q} = \left\{ \frac{p}{q} \;\middle\vert\; p, q \in \mathbb{Z}, q \neq 0 \right\} \)
+%     \item Set of irrationals: \( \mathbb{R} \setminus \mathbb{Q} = \{ r \mid r \text{ is irrational} \} \)
+%     \item Set of complex numbers: \( \mathbb{C} = \{ a + i b \mid (a, b) \in \mathbb{R}^2 \} \)
+%     \end{itemize}
+
+%     \subsection{Divisibility}
+%     \textbf{Definition.}  
+% For $a, b$ $\in$ $\mathbb{Z}$, we say that \emph{$a$ divides $b$}, written $a \mid b$, if there exists $k \in \mathbb{Z}$ such that
+% \[
+% b = a \cdot k.
+% \]
+% In this case, $a$ is called a \emph{divisor} of $b$, and $b$ is a \emph{multiple} of $a$.
+
+% \medskip
+% \noindent
+% \textbf{Negation.}  
+% If there does not exist any integer $k$ such that $b = a \cdot k$, then we write $a \nmid b$.
+
+% \bigskip
+% \textbf{Special Cases.}
+% \begin{enumerate}
+%     \item For all $b \in \mathbb{Z}$, $1 \mid b$ and $-1 \mid b$.  
+%     (Proof: $b = 1 \cdot b$ and $b = (-1) \cdot (-b)$.)
+
+%     \item For all $a \neq 0$, $a \mid 0$.  
+%     (Proof: $0 = a \cdot 0$.)
+
+%     \item For $b \neq 0$, $0 \nmid b$.  
+%     (Proof: there is no $k \in \mathbb{Z}$ such that $b = 0 \cdot k$.)
+
+%     \item The case $0 \mid 0$ is usually left undefined, though in some conventions it is considered true since $0 = 0 \cdot k$ for all $k \in \mathbb{Z}$.  
+
+%     \item For any nonzero $a \in \mathbb{Z}$, $a \mid a$.  
+%     (Proof: $a = a \cdot 1$.)
+% \end{enumerate}
+
+% \subsection{Properties}
+%     \begin{enumerate}
+%         \item missing
+%         \item missing
+%         \item missing
+%         \item $a | b$ and $b | c$ $\implies$ $a | c$ (Transitive property)
+%         \item $a | b \implies a | -b$
+%         \item $a | b \wedge b | a \implies a = \pm b$
+%         \item $ a | b \wedge m \in \mathbb{Z} \implies a | bm$
+%     \end{enumerate}
+
+%     \begin{itemize}
+%         \item Proof of $a | b  \wedge a | c\implies a | bx + cy$ for $a, b, c \in \mathbb{Z}$
+%         \newline Given $a | b$ and $a | c$, then $\exists$  $k_1, k_2 \in \mathbb{Z} $ such that $b = a\cdot k_1$ and $c = a \cdot k_2$
+%          \newline $bx + cy = ak_1x + ak_2y$
+%          \newline $bx + cy = a(k_1x + k_2y)$
+%          \newline $\implies a | bx + cy$
+%     \end{itemize}
+
+% % {\color{SkyBlue}
+% % Answer work
+
+% % \color{Thistle}{\textbf{Answer}}
+% % }
+
+% % \begin{tikzpicture}
+
+% % % coords for drawing angles
+% % \coordinate (origin) at (0,0);
+% % \coordinate (negx) at (-5,0);
+% % \coordinate (posx) at (5,0);
+% % \coordinate (negy) at (0, -5);
+% % \coordinate (vecb) at (2.4075, -9.1945);
+% % \coordinate (veca) at (-2.4075, 3.1945);
+
+% % %axes
+% % \draw[<->,ultra thick] (-5,0) coordinate (A) --(5,0) node[right]{$x$};
+% % \draw[<->,ultra thick] (0,-5)--(0,5) node[above]{$y$};
+
+% % %vec a
+% % \draw[->, thick, capri] (0,0) coordinate (B) -- (-2.4075, 3.1945) coordinate (C) node[left]{\textbf{A}};
+
+% % % angle for vec a
+% % \draw pic[thick, capri, "53$^\circ$", draw, <-,angle radius=1cm,angle eccentricity=1.4] {angle = veca--origin--negx};
+
+% % % opposite angle for vec a
+% % \draw pic[thick, "127$^\circ$", draw, ->,angle radius=1cm, angle eccentricity=1.4] {angle = posx--origin--veca};
+
+% % % magnitude label for vec a
+% % \draw [thick, capri, decorate,decoration={brace,amplitude=6pt,mirror,raise=1ex}] (0,0) -- (-2.4075, 3.1945) node[midway, yshift=2em, xshift=2em]{8.0 m};
+
+% % % vec b
+% % \draw[->, thick, carminered] (0,0) coordinate (B) -- (2.4075, -9.1945) coordinate (C) node[left]{\textbf{B}};
+
+% % % angle for vec b
+% % \draw pic[thick, carminered, "14.7$^\circ$", draw, ->,angle radius=5cm, angle eccentricity=1.1] {angle = negy--origin--vecb};
+
+% % % label for vec b
+% % \draw [thick, carminered, decorate,decoration={brace,amplitude=6pt,raise=1ex}] (0,0) -- (2.4075, -9.1945) node[midway, xshift=2.5em, yshift=0.5em]{19.0 m};
+
+% % %vec c
+% % \draw[->, thick, brightlavender] (0,0) coordinate (B) -- (0, -6) coordinate (C) node[below]{\textbf{A + B}};
+
+% % % label for vec c
+% % \draw [thick, brightlavender, decorate,decoration={brace,amplitude=6pt,raise=1ex, mirror}] (0,0) -- (0, -6) node[midway, xshift=-3em]{12.0 m};
+% % \end{tikzpicture}
+
+
+
+% \end{document}
+\documentclass[hidelinks]{article}
+
+% Page setup
+\usepackage[a4paper, total={7in, 10in}]{geometry}
+\usepackage{fancyhdr}
+\usepackage{setspace}
+\setlength{\parskip}{0.5em}
+\linespread{1.2}
+
+% Math & theorem environments
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{enumitem}
+
+% TikZ & colors
+\usepackage{tikz}
+\usetikzlibrary{angles,calc,decorations.pathreplacing}
+\usepackage{tkz-euclide}
+\usepackage[dvipsnames]{xcolor}
+
+% Hyperref
+\usepackage[unicode]{hyperref}
+\usepackage[all]{hypcap}
+
+% Colors
+\definecolor{carminered}{rgb}{1.0, 0.0, 0.22}
+\definecolor{capri}{rgb}{0.0, 0.75, 1.0}
+\definecolor{brightlavender}{rgb}{0.75, 0.58, 0.89}
+
+% Theorem styles
+\newtheoremstyle{mystyle}%
+  {6pt}   % space above
+  {6pt}   % space below
+  {\itshape} % body font
+  {} % indent
+  {\bfseries} % theorem head font
+  {.} % punctuation after theorem head
+  {0.5em} % space after theorem head
+  {} % theorem head spec
+\theoremstyle{mystyle}
+\newtheorem{definition}{Definition}[section]
+\newtheorem{proposition}{Proposition}[section]
+
+% Header & footer
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{Number Theory \& Cryptography}
+\fancyhead[R]{\thepage}
+\fancyfoot[C]{S. Muhammed -- 2025}
+
+% Title
+\title{\textbf{\LARGE Number Theory \& Cryptography}}
+\author{S. Muhammed}
+\date{July 24, 2025}
+
+\begin{document}
+\maketitle
+
+% ---------------------------------------------------------
+\section{Cryptosystem}
+
+% (your TikZ diagram remains the same)
+\tikzset{every picture/.style={line width=0.75pt}} %set default line width to 0.75pt        
+
+\begin{tikzpicture}[x=0.75pt,y=0.75pt,yscale=-1,xscale=1]
+%uncomment if require: \path (0,386); %set diagram left start at 0, and has height of 386
+\path (0, 386)
+%Rounded Rect [id:dp9771184983681228] 
+\draw   (64,51.8) .. controls (64,43.63) and (70.63,37) .. (78.8,37) -- (171.2,37) .. controls (179.37,37) and (186,43.63) .. (186,51.8) -- (186,96.2) .. controls (186,104.37) and (179.37,111) .. (171.2,111) -- (78.8,111) .. controls (70.63,111) and (64,104.37) .. (64,96.2) -- cycle ;
+%Rounded Rect [id:dp1945571681567504] 
+\draw   (473,59.8) .. controls (473,51.63) and (479.63,45) .. (487.8,45) -- (580.2,45) .. controls (588.37,45) and (595,51.63) .. (595,59.8) -- (595,104.2) .. controls (595,112.37) and (588.37,119) .. (580.2,119) -- (487.8,119) .. controls (479.63,119) and (473,112.37) .. (473,104.2) -- cycle ;
+%Curve Lines [id:da9889239320357027] 
+\draw    (187,79) .. controls (227,49) and (227,107) .. (267,77) ;
+%Curve Lines [id:da33775812576224185] 
+\draw    (392,74) .. controls (430,117) and (445,49) .. (474,80) ;
+%Shape: Ellipse [id:dp08540919171933103] 
+\draw   (267,74) .. controls (267,55.5) and (294.98,40.5) .. (329.5,40.5) .. controls (364.02,40.5) and (392,55.5) .. (392,74) .. controls (392,92.5) and (364.02,107.5) .. (329.5,107.5) .. controls (294.98,107.5) and (267,92.5) .. (267,74) -- cycle ;
+%Shape: Ellipse [id:dp46388791599193957] 
+\draw   (132,145) .. controls (132,133.95) and (147.67,125) .. (167,125) .. controls (186.33,125) and (202,133.95) .. (202,145) .. controls (202,156.05) and (186.33,165) .. (167,165) .. controls (147.67,165) and (132,156.05) .. (132,145) -- cycle ;
+%Straight Lines [id:da15973211656651143] 
+\draw    (245,145) -- (244.03,88) ;
+\draw [shift={(244,86)}, rotate = 89.03] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
+%Straight Lines [id:da4746861972609774] 
+\draw    (202,145) -- (245,145) ;
+%Shape: Ellipse [id:dp0276925129822172] 
+\draw   (511,156) .. controls (511,144.95) and (526.67,136) .. (546,136) .. controls (565.33,136) and (581,144.95) .. (581,156) .. controls (581,167.05) and (565.33,176) .. (546,176) .. controls (526.67,176) and (511,167.05) .. (511,156) -- cycle ;
+%Straight Lines [id:da9085643931127179] 
+\draw    (424,87) -- (425,157) ;
+%Straight Lines [id:da7565444263438966] 
+\draw    (425,157) -- (509,156.02) ;
+\draw [shift={(511,156)}, rotate = 179.33] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
+%Straight Lines [id:da31623314674601577] 
+\draw    (329.5,107.5) -- (330.97,212) ;
+\draw [shift={(331,214)}, rotate = 269.19] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
+%Rounded Rect [id:dp23827477157096155] 
+\draw   (245,228) .. controls (245,220.27) and (251.27,214) .. (259,214) -- (402,214) .. controls (409.73,214) and (416,220.27) .. (416,228) -- (416,270) .. controls (416,277.73) and (409.73,284) .. (402,284) -- (259,284) .. controls (251.27,284) and (245,277.73) .. (245,270) -- cycle ;
+%Curve Lines [id:da659209956764685] 
+\draw    (329.5,40.5) .. controls (369.1,10.8) and (333.72,55.1) .. (371.82,26.88) ;
+\draw [shift={(373,26)}, rotate = 143.13] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
+
+% Text Node
+\draw (101,69) node [anchor=north west][inner sep=0.75pt]   [align=left] {Sender};
+% Text Node
+\draw (502,73) node [anchor=north west][inner sep=0.75pt]   [align=left] {Receiver};
+% Text Node
+\draw (301,65) node [anchor=north west][inner sep=0.75pt]   [align=left] {Internet};
+% Text Node
+\draw (160,135) node [anchor=north west][inner sep=0.75pt]   [align=left] {m};
+% Text Node
+\draw (132,173) node [anchor=north west][inner sep=0.75pt]   [align=left] {Message};
+% Text Node
+\draw (536,147) node [anchor=north west][inner sep=0.75pt]   [align=left] {m};
+% Text Node
+\draw (283,219) node [anchor=north west][inner sep=0.75pt]   [align=center] {Intruder/Attacker/\\Eavesdropper};
+% Text Node
+\draw (218,54) node [anchor=north west][inner sep=0.75pt]   [align=left] {Cipher};
+% Text Node
+\draw (402,57) node [anchor=north west][inner sep=0.75pt]   [align=left] {Cipher};
+% Text Node
+\draw (207,123) node [anchor=north west][inner sep=0.75pt]   [align=left] {Enc.};
+% Text Node
+\draw (430,134) node [anchor=north west][inner sep=0.75pt]   [align=left] {Dec.};
+% Text Node
+\draw (377,16) node [anchor=north west][inner sep=0.75pt]   [align=left] {{\small Insecure channel}};
+
+
+\end{tikzpicture}
+% -- omitted here for brevity --
+
+\begin{itemize}[leftmargin=2em]
+    \item A key will be used that is known only between sender and receiver.
+    \item Cryptanalysis = the study of decrypting cipher without knowing the key.
+    \item Number theory provides mathematical tools to build cryptosystems.
+\end{itemize}
+
+% ---------------------------------------------------------
+\section{Properties on Integers and Rationals}
+
+\begin{itemize}[leftmargin=2em]
+    \item Natural numbers: \(\mathbb{N} = \{1, 2, 3, \ldots\}\)
+    \item Integers: \(\mathbb{Z} = \{0, \pm1, \pm2, \ldots\}\)
+    \item Rationals: \(\mathbb{Q} = \left\{ \tfrac{p}{q} \;\middle\vert\; p, q \in \mathbb{Z}, q \neq 0 \right\}\)
+    \item Irrationals: \(\mathbb{R} \setminus \mathbb{Q}\)
+    \item Complex numbers: \(\mathbb{C} = \{a + ib \mid (a, b) \in \mathbb{R}^2\}\)
+\end{itemize}
+
+% ---------------------------------------------------------
+\subsection{Divisibility}
+
+\begin{definition}[Divisibility]
+For $a, b \in \mathbb{Z}$, we say that \emph{$a$ divides $b$}, written $a \mid b$, if there exists $k \in \mathbb{Z}$ such that
+\[
+b = a \cdot k.
+\]
+\end{definition}
+
+If no such integer $k$ exists, then we write $a \nmid b$.
+
+\medskip
+\textbf{Special Cases:}
+\begin{enumerate}[label=(\roman*)]
+    \item $1 \mid b$ and $-1 \mid b$ for all $b \in \mathbb{Z}$.  
+    \item $a \mid 0$ for all $a \neq 0$.  
+    \item $0 \nmid b$ for $b \neq 0$.  
+    \item $0 \mid 0$ is usually left undefined (sometimes considered true).  
+    \item $a \mid a$ for all $a \neq 0$.  
+\end{enumerate}
+
+% ---------------------------------------------------------
+\subsection{Properties of Divisibility}
+
+\begin{proposition}
+For integers $a, b, c, m$:
+\begin{enumerate}[label=(\alph*)]
+    \item If $a \mid b$ and $b \mid c$, then $a \mid c$.
+    \item If $a \mid b$, then $a \mid -b$.
+    \item If $a \mid b$ and $b \mid a$, then $a = \pm b$.
+    \item If $a \mid b$ and $m \in \mathbb{Z}$, then $a \mid bm$.
+    \item If $a \mid b$ and $a \mid c$, then $a \mid bx + cy$ for all $x, y \in \mathbb{Z}$.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}[Sketch of proof for (e)]
+If $a \mid b$ and $a \mid c$, then $b = ak_1$ and $c = ak_2$ for some $k_1, k_2 \in \mathbb{Z}$. Then
+\[
+bx + cy = a(k_1x + k_2y),
+\]
+so $a \mid bx + cy$.
+\end{proof}
+
+\end{document}
+
