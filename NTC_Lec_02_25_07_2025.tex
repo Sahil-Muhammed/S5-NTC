@@ -1,0 +1,181 @@
+\documentclass[hidelinks]{article}
+
+% Page setup
+\usepackage[a4paper, total={7in, 10in}]{geometry}
+\usepackage{fancyhdr}
+\usepackage{setspace}
+\setlength{\parskip}{0.5em}
+\linespread{1.2}
+
+% Math & theorem environments
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{enumitem}
+
+% TikZ & colors
+\usepackage{tikz}
+\usetikzlibrary{angles,calc,decorations.pathreplacing}
+\usepackage{tkz-euclide}
+\usepackage[dvipsnames]{xcolor}
+
+% Hyperref
+\usepackage[unicode]{hyperref}
+\usepackage[all]{hypcap}
+
+% Colors
+\definecolor{orange}{RGB}{255, 165, 0}
+
+% Theorem styles
+\newtheoremstyle{mystyle}%
+  {6pt}   % space above
+  {6pt}   % space below
+  {\itshape} % body font
+  {} % indent
+  {\bfseries} % theorem head font
+  {.} % punctuation after theorem head
+  {0.5em} % space after theorem head
+  {} % theorem head spec
+\theoremstyle{mystyle}
+\newtheorem{definition}{Definition}[section]
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}{Proposition}[section]
+
+% Header & footer
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{Number Theory \& Cryptography}
+\fancyhead[R]{\thepage}
+\fancyfoot[C]{S. Muhammed -- 2025}
+
+% Title
+\title{\textbf{\LARGE Number Theory \& Cryptography}}
+\author{S. Muhammed}
+\date{July 24, 2025}
+
+\begin{document}
+\maketitle
+\section{Number Theory}
+\begin{itemize}
+    \item For $n \in \mathbb{Z}$, $\pm 1, \pm n$ are trivial divisors of $n$.
+    \item For $p \in \mathbb{N}$ with $p > 1$, $p$ is prime if it has only positive trivial divisors.
+    \item Integers other than primes are called composite numbers (e.g. $n = 4 \cdot p$).
+\end{itemize}
+
+\begin{definition}[Division Theorem]
+For $a, b \in \mathbb{Z}$ with $a > b$ and $b \neq 0$, there exist \textbf{unique} $q, r \in \mathbb{Z}$ such that
+\[
+a = bq + r, \qquad 0 \leq r < b.
+\]
+If $b \nmid a$, then $0 < r < b$.
+\end{definition}
+
+\section{Proof of Uniqueness in Division Theorem}
+Assume $q_1 \neq q$, $r \neq r_1$, $b \neq 0$.  
+
+For $a, b \in \mathbb{Z}$, $\exists$  $q, r \in \mathbb{Z}$ such that 
+\[
+a = bq + r \quad \longrightarrow (1)
+\]
+and also $\exists \, q_1, r_1 \in \mathbb{Z}$ such that 
+\[
+a = bq_1 + r_1 \quad \longrightarrow (2)
+\]
+
+Subtracting $(1)$ and $(2)$:
+$$ bq_1 + r_1 = bq + r \Rightarrow b(q_1 - q) = (r - r_1)$$ 
+
+Thus $b \mid (r-r_1)$, which contradicts the condition $0 \leq r, r_1 < b$ unless $r = r_1$.  
+Hence $r = r_1$, and therefore
+\[
+q = \frac{a-r}{b}, \quad q_1 = \frac{a-r_1}{b} \Rightarrow q = q_1
+\]
+Thus both $q,r$ are unique.
+
+\section{Greatest Common Divisor (GCD)}
+\begin{definition}
+For $a, b \in \mathbb{Z}$, $d \in \mathbb{Z}$ is called a \emph{common divisor} if $d \mid a$ and $d \mid b$.  
+The greatest among all such divisors is called the \emph{greatest common divisor}, denoted $\gcd(a,b)$ or $(a,b)$.
+\end{definition}
+
+Examples:
+\[
+\gcd(10,5) = 5, \quad \gcd(5,0) = 5, \quad \gcd(5,2) = 1 \ (\text{co-prime}).
+\]
+
+\section{Least Common Multiple (LCM)}
+\begin{itemize}
+    \item $[10,20] = \mathrm{LCM}(10,20) = 20$.
+    \item $a \cdot b = \gcd(a,b) \cdot \mathrm{lcm}(a,b)$.
+    \item $a \cdot b = (a,b)[a,b]$.
+\end{itemize}
+
+\begin{theorem}[Bézout]
+Let $a, b \in \mathbb{Z}$ and let $d = \gcd(a,b)$. Then there exist $x,y \in \mathbb{Z}$ such that
+\[
+d = ax + by
+\]
+\end{theorem}
+
+\begin{proof}
+\textcolor{orange}{Optional}
+
+If $a=b=0$, then $\gcd(a,b)=0$, and the identity $0 = 0 \cdot x + 0 \cdot y$ holds trivially.  
+Assume not both $a,b$ are zero, and set $d=\gcd(a,b)>0$.
+
+Consider
+\[
+S = \{ax + by \mid x,y \in \mathbb{Z},\ ax+by>0\}.
+\]
+By the well-ordering principle, $S$ has a least element $m$.  
+So there exist $x_0,y_0 \in \mathbb{Z}$ such that $m=ax_0+by_0$.
+
+\textbf{(i) $m \mid a,b$.}  
+Divide $a$ by $m$:
+\[
+a = qm + r, \quad 0 \leq r < m.
+\]
+But
+\[
+r = a - qm = a(1-qx_0) + b(-qy_0).
+\]
+Thus $r \in S$. By minimality, $r=0$, so $m \mid a$. Similarly, $m \mid b$.
+
+\textbf{(ii) $m$ is greatest.}  
+If $c$ is any common divisor of $a,b$, then $c \mid (ax+by)$ for all $x,y$, in particular $c \mid m$.  
+Thus $m$ is divisible by all common divisors.
+
+Therefore $m = \gcd(a,b) = d$, and $d = ax_0 + by_0$.
+
+\end{proof}
+
+
+\begin{theorem}
+For $a,b,c \in \mathbb{Z}$, if $c \mid ab$ and $\gcd(a,c)=1$, then $c \mid b$.
+\end{theorem}
+
+\begin{proof}
+Since $\gcd(a,c)=1$, $\exists \, x,y \in \mathbb{Z}$ such that $ax+cy=1$.  
+Multiplying through by $b$:
+\[
+abx + cby = b.
+\]
+
+Since $c \mid ab$, $\exists$ $k \in \mathbb{Z}$ such that $ab = ck$. So,
+
+$$ckx + cby = c(kx + by) = b \Rightarrow c \mid b$$
+
+\end{proof}
+
+\begin{theorem}
+Let $p$ be prime. For $a,b \in \mathbb{Z}$, if $p \mid ab$, then $p \mid a$ or $p \mid b$.
+\end{theorem}
+
+\begin{proof}
+\begin{itemize}
+    \item If $p \nmid a$, then $\gcd(p,a)=1$, so $p \mid b$.
+    \item If $p \nmid b$, then $\gcd(p,b)=1$, so $p \mid a$.
+    \item If $p \mid a$ and/or $p \mid b$, the statement is already true.
+\end{itemize}
+\end{proof}
+
+\end{document}
+
