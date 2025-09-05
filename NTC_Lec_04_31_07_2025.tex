@@ -1,0 +1,224 @@
+\documentclass[hidelinks]{article}
+
+% Page setup
+\usepackage[a4paper, total={7in, 10in}]{geometry}
+\usepackage{fancyhdr}
+\usepackage{setspace}
+\setlength{\parskip}{0.5em}
+\linespread{1.1}
+
+% Math & theorem environments
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{enumitem}
+
+% TikZ & colors
+\usepackage{tikz}
+\usetikzlibrary{angles,calc,decorations.pathreplacing}
+\usepackage{tkz-euclide}
+\usepackage{circuitikz}
+\usepackage[dvipsnames]{xcolor}
+
+% Hyperref
+\usepackage[unicode]{hyperref}
+\usepackage[all]{hypcap}
+
+% Colors
+\definecolor{carminered}{rgb}{1.0, 0.0, 0.22}
+\definecolor{capri}{rgb}{0.0, 0.75, 1.0}
+\definecolor{brightlavender}{rgb}{0.75, 0.58, 0.89}
+
+% Theorem styles
+\newtheoremstyle{mystyle}%
+  {6pt}   % space above
+  {6pt}   % space below
+  {\itshape} % body font
+  {} % indent
+  {\bfseries} % theorem head font
+  {.} % punctuation after theorem head
+  {0.5em} % space after theorem head
+  {} % theorem head spec
+\theoremstyle{mystyle}
+\newtheorem{definition}{Definition}[section]
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}{Proposition}[section]
+
+% Header & footer
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{Number Theory \& Cryptography}
+\fancyhead[R]{\thepage}
+\fancyfoot[C]{S. Muhammed -- 2025}
+
+% Title
+\title{\textbf{\LARGE Number Theory \& Cryptography}}
+\author{S. Muhammed}
+\date{July 31, 2025}
+
+\begin{document}
+\maketitle
+
+\section{Extended Euclid's Algorithm}
+
+\begin{itemize}
+    \item Returns the values of $a, b, d$ satisfying $ax + by = d$ given integers $x, y$.
+    \item It is \emph{extended} because it returns both the gcd and coefficients of the above equation.
+\end{itemize}
+
+\begin{verbatim}
+ExtendedEuclid(x, y)
+if (y == 0) return (x, 1, 0)
+else{
+        q = x / y;
+        r = x % y;
+        (d, a, b) = ExtendedEuclid(y, r);
+        return (d, b, a - bq);
+}
+\end{verbatim}
+
+
+\subsection*{Example: 35 and 20}
+
+\begin{figure}[!ht]
+\centering
+\resizebox{0.9\textwidth}{!}{%
+\begin{circuitikz}
+\tikzstyle{every node}=[font=\LARGE]
+
+% Your original TikZ nodes go here directly
+\draw  (1.5,16.25) rectangle (6,8.5);
+\draw  (7.75,14) rectangle (12.25,6.25);
+\draw  (14.25,12) rectangle (18.75,4.25);
+\draw  (20,5.75) rectangle (24,2.5);
+\node [font=\LARGE] at (2.5,16.75) {$x$};
+\node [font=\LARGE] at (5,16.75) {$y$};
+\node [font=\LARGE] at (2.5,15.75) {35};
+\node [font=\LARGE] at (5,15.75) {20};
+\node [font=\LARGE] at (8.5,14.5) {$x$};
+\node [font=\LARGE] at (11.5,14.5) {$y$};
+\node [font=\LARGE] at (15.25,12.5) {$x$};
+\node [font=\LARGE] at (17.75,12.5) {$y$};
+\node [font=\LARGE] at (20.75,6.25) {$x$};
+\node [font=\LARGE] at (23.25,6.25) {$y$};
+\node [font=\LARGE] at (2.5,15.75) {35};
+\node [font=\LARGE] at (5,15.75) {20};
+\node [font=\LARGE] at (8.5,13.5) {20};
+\node [font=\LARGE] at (11.5,13.5) {15};
+\node [font=\LARGE] at (15.25,11.5) {15};
+\node [font=\LARGE] at (17.75,11.5) {5};
+\node [font=\LARGE] at (20.75,5.25) {5};
+\node [font=\LARGE] at (23.25,5.25) {0};
+\node [font=\LARGE] at (3.75,14.5) {$q = 1$};
+\node [font=\LARGE] at (3.75,13.5) {$r = 15$};
+\node [font=\LARGE] at (10,11.75) {$q = 1$};
+\node [font=\LARGE] at (10,10.75) {$r = 5$};
+\node [font=\LARGE] at (16.5,10) {$q = 3$};
+\node [font=\LARGE] at (16.5,9) {$r = 0$};
+\node [font=\LARGE] at (3.75,12.5) {$(d, a, b)$};
+\node [font=\LARGE] at (10,9.75) {$(d, a, b)$};
+\node [font=\LARGE] at (16.5,8) {$(d, a, b)$};
+\draw [->, >=Stealth] (6,13.5) -- (7.75,13.5);
+\draw [->, >=Stealth] (12.25,11.75) -- (14.25,11.75);
+\draw [->, >=Stealth] (18.75,5.5) -- (20,5.5);
+\node [font=\LARGE] at (22,4) {$(5, 1, 0)$};
+\node [font=\LARGE] at (21.5,4) {$$};
+\node [font=\LARGE] at (21.5,4) {$$};
+\draw [->, >=Stealth] (20,4.25) -- (17.75,6.75);
+\node [font=\LARGE] at (16.5,5) {$(5, 0, 1)$};
+\node [font=\LARGE] at (10,8) {$(d, b, a-bq)$};
+\node [font=\LARGE] at (3.75,10.5) {$(d, b, a-bq)$};
+\node [font=\LARGE] at (16.5,7) {$(5, 1, 0)$};
+\node [font=\LARGE] at (10,8.75) {(5, 0, 1)};
+\node [font=\LARGE] at (3.75,11.5) {(5, 1, -1)};
+\node [font=\LARGE] at (16.5,6) {$(d, b, a-bq)$};
+\node [font=\LARGE] at (10,7) {(5, 1, -1)};
+\node [font=\LARGE] at (3.75,9.5) {(5, -1, 2)};
+\draw [->, >=Stealth] (14.25,5) -- (11.25,8.75);
+\draw [->, >=Stealth] (7.75,7) -- (5,11.5);
+\draw [ color={rgb,255:red,51; green,209; blue,122} , dashed] (3.75,9.5) ellipse (1.75cm and 0.5cm);
+% ... (trimmed, keep the rest of your drawing here) ...
+\end{circuitikz}
+}
+\caption{Extended Euclidean Algorithm; $5 = (-1)35 + (2)20$}
+\end{figure}
+
+\section{Recurrence Relation}
+
+\[
+T(n) =
+\begin{cases}
+	2 & \text{if } n = 0, \\
+	2 + T(n-1) & \text{if } n > 0.
+\end{cases}
+\]
+
+\begin{figure}[!ht]
+\centering
+\resizebox{0.25\textwidth}{!}{%
+\begin{circuitikz}
+\tikzstyle{every node}=[font=\LARGE]
+\node [font=\LARGE] at (6.5,15) {a};
+\node [font=\LARGE] at (3.75,13.25) {b $<$ a/2};
+\node [font=\LARGE] at (6.5,13.25) {a/2};
+\node [font=\LARGE] at (9.5,13.25) {c $>$ a/2};
+\draw (2,14.25) to[short] (11.25,14.25);
+\draw (2,14.5) to[short] (2,13.75);
+\draw (11.25,13.75) to[short] (11.25,14.5);
+\draw (6.5,14.5) to[short] (6.5,13.75);
+\end{circuitikz}
+}%
+
+\label{fig:my_label}
+\end{figure}
+
+\subsection*{Examples:}
+\begin{itemize}
+    \item $\gcd(8, 3) = \gcd(3, 2) = \gcd(2, 1) = \gcd(1, 0)$
+    \item $\gcd(8, 5) = \gcd(5, 3) = \gcd(3, 2) = \gcd(2, 1) = \gcd(1, 0)$
+\end{itemize}
+
+Thus, complexity: $\Theta(\log_2 a)$.
+\section{Congruence}
+\begin{definition}
+For integers $a, b$, and $n > 0$:
+\[
+a \equiv b \pmod{n} \quad \iff \quad n \mid (a - b).
+\]
+\end{definition}
+
+Examples:
+\[
+5 \equiv 2 \pmod{3}, \quad 5 \not\equiv 3 \pmod{3}.
+\]
+
+\subsection*{Remainder Classes mod 5}
+\[
+\begin{aligned}
+[0] &= \{\dots, -10, -5, 0, 5, 10, \dots\}, \\
+[1] &= \{\dots, -9, -4, 1, 6, 11, \dots\}, \\
+[2] &= \{\dots, -8, -3, 2, 7, 12, \dots\}, \\
+[3] &= \{\dots, -7, -2, 3, 8, 13, \dots\}, \\
+[4] &= \{\dots, -6, -1, 4, 9, 14, \dots\}.
+\end{aligned}
+\]
+
+Thus,
+\[
+\mathbb{Z} = [0] \cup [1] \cup [2] \cup [3] \cup [4].
+\]
+
+\subsection*{Properties}
+\begin{enumerate}[label=(\arabic*)]
+    \item $(a \pm b) \bmod n = (a \bmod n) \pm (b \bmod n)$
+    \item $(a \cdot b) \bmod n = (a \bmod n)(b \bmod n)$
+    \item $a \equiv b \pmod{n} \;\Rightarrow\; a \bmod n = b \bmod n$
+\end{enumerate}
+
+\subsection*{Theorems}
+\begin{enumerate}[label=(\roman*)]
+    \item $a \equiv b \pmod{n} \;\Rightarrow\; b \equiv a \pmod{n}, \quad (a-b) \equiv 0 \pmod{n}$.
+    \item $a \equiv b \pmod{n},\; b \equiv c \pmod{n} \;\Rightarrow\; a \equiv c \pmod{n}$.
+    \item $a \equiv b \pmod{n},\; c \equiv d \pmod{n} \;\Rightarrow\; a \pm b \equiv c \pm d \pmod{n}$.
+\end{enumerate}
+
+\end{document}
+
