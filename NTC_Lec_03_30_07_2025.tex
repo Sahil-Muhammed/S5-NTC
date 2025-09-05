@@ -1,0 +1,151 @@
+\documentclass[hidelinks]{article}
+
+% Page setup
+\usepackage[a4paper, total={7in, 10in}]{geometry}
+\usepackage{fancyhdr}
+\usepackage{setspace}
+\setlength{\parskip}{0.5em}
+\linespread{1.2}
+
+% Math & theorem environments
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{enumitem}
+
+% TikZ & colors
+\usepackage{tikz}
+\usetikzlibrary{angles,calc,decorations.pathreplacing}
+\usepackage{tkz-euclide}
+\usepackage[dvipsnames]{xcolor}
+
+% Hyperref
+\usepackage[unicode]{hyperref}
+\usepackage[all]{hypcap}
+
+% Colors
+\definecolor{carminered}{rgb}{1.0, 0.0, 0.22}
+\definecolor{capri}{rgb}{0.0, 0.75, 1.0}
+\definecolor{brightlavender}{rgb}{0.75, 0.58, 0.89}
+
+% Theorem styles
+\newtheoremstyle{mystyle}%
+  {6pt}   % space above
+  {6pt}   % space below
+  {\itshape} % body font
+  {} % indent
+  {\bfseries} % theorem head font
+  {.} % punctuation after theorem head
+  {0.5em} % space after theorem head
+  {} % theorem head spec
+\theoremstyle{mystyle}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{definition}{Definition}[section]
+\newtheorem{proposition}{Proposition}[section]
+
+% Header & footer
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{Number Theory \& Cryptography}
+\fancyhead[R]{\thepage}
+\fancyfoot[C]{S. Muhammed -- 2025}
+
+% Title
+\title{\textbf{\LARGE Number Theory \& Cryptography}}
+\author{S. Muhammed}
+\date{July 30, 2025}
+
+\begin{document}
+\maketitle
+
+\section{Fundamental Theorem of Arithmetic}
+
+\begin{theorem}[Fundamental Theorem of Arithmetic]
+Let $n \in \mathbb{Z}$. Then
+\[
+n = (\pm) p_1^{\alpha_1} \cdot p_2^{\alpha_2} \cdot \dots \cdot p_r^{\alpha_r},
+\]
+where $p_i$ are primes and $\alpha_i \in \mathbb{N} \cup \{0\}$.
+\end{theorem}
+
+\textbf{Examples:}
+\[
+24 = 2^3 \cdot 3^1 \cdot 5^0, \qquad 30 = 2^1 \cdot 3^1 \cdot 5^1
+\]
+
+\subsection{gcd and lcm via prime factorization}
+\[
+\gcd(a, b) = p_1^{\min(\alpha_1, \beta_1)} \cdot p_2^{\min(\alpha_2, \beta_2)} \cdots p_r^{\min(\alpha_r, \beta_r)}
+\]
+\[
+\mathrm{lcm}(a, b) = p_1^{\max(\alpha_1, \beta_1)} \cdot p_2^{\max(\alpha_2, \beta_2)} \cdots p_r^{\max(\alpha_r, \beta_r)}
+\]
+
+\textbf{Example:}
+\[
+\gcd(24, 30) = 2^{\min(3,1)} \cdot 3^{\min(1,1)} \cdot 5^{\min(0,1)} = 2^1 \cdot 3^1 \cdot 5^0 = 6
+\]
+
+\subsection{Remark}
+The \textbf{Integer Factorization Problem (IFP)} asks for the factorization of a given integer $n$ into primes.  
+For example, given $n$, find $p,q$ such that $n=pq$.  
+RSA encryption (a widely used public-key cryptosystem) would be broken if the IFP were solved efficiently.
+
+\section{Euclidean Algorithm}
+
+Let $a, b \in \mathbb{Z}$ with $a > b$. Then there exist $q, r \in \mathbb{Z}$ such that
+\[
+a = bq + r, \qquad 0 \leq r < b.
+\]
+
+\subsection{Steps}
+\begin{align*}
+a &= bq_1 + r_1, & 0 \le r_1 < b \\
+b &= r_1 q_2 + r_2, & 0 \le r_2 < r_1 \\
+r_1 &= r_2 q_3 + r_3, & 0 \le r_3 < r_2 \\
+r_2 &= r_3 q_4 + r_4, & 0 \le r_4 < r_3 \\
+&\vdots \\
+r_{j-2} &= r_{j-1} q_j + r_j, & 0 \le r_j < r_{j-1} \\
+r_{j-1} &= r_j q_{j+1} \\
+\end{align*}
+
+Then $r_j = \gcd(a, b)$.
+
+\subsection{Example: $\gcd(36, 21)$}
+\begin{align*}
+36 &= 21 \cdot 1 + 15 \\
+21 &= 15 \cdot 1 + 6 \\
+15 &= 6 \cdot 2 + 3 \\
+6  &= 3 \cdot 2 + 0
+\end{align*}
+
+Hence $\gcd(36, 21) = 3$.
+
+\subsection{Recursive Implementation in C}
+\begin{verbatim}
+int gcd(int a, int b) {
+    if (a < b) return gcd(b, a);
+    if (b == 0) return a;
+    return gcd(b, a % b);
+}
+\end{verbatim}
+
+\[
+\gcd(36, 21) = \gcd(21, 15) = \gcd(15, 6) = \gcd(6, 3) = \gcd(3, 0) = 3
+\]
+
+\section{Recurrence Relation}
+
+\[
+T(n) =
+\begin{cases}
+  3 & \text{if } n = 0, \\
+  T(n-1) + 3 & \text{if } n \geq 1.
+\end{cases}
+\]
+
+By repeated substitution:
+\[
+T(n) = T(n-1) + 2 = T(n-2) + 4 = \dots = 2 + 2n.
+\]
+
+\end{document}
+
